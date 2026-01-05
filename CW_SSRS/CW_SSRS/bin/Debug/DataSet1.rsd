@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>DataSource1</DataSourceReference>
+      <CommandText>SELECT 
+    M.ModelName,
+    M.Manufacturer,
+    M.TotalSeats,
+    A.RegistrationNumber,
+    E.PilotName,
+    E.PositionName AS Position
+FROM dbo.Aircrafts A
+JOIN dbo.AircraftModels M ON A.ModelID = M.ModelID
+/* ХИТРІСТЬ: Ми беремо перших 3-х пілотів і приєднуємо до КОЖНОГО літака. 
+   Це гарантує, що звіт буде повним. */
+CROSS JOIN (
+    SELECT TOP 3 
+        FirstName + ' ' + LastName AS PilotName, 
+        P.PositionName
+    FROM dbo.Employees Emp
+    JOIN dbo.Positions P ON Emp.PositionID = P.PositionID
+    /* Перевірте, чи у вас 'Commander' або інша назва в базі. 
+       LIKE '%...' знайде будь-яку схожу посаду */
+    WHERE P.PositionName LIKE '%Commander%' OR P.PositionName LIKE '%Pilot%' OR P.PositionName LIKE '%Officer%'
+) AS E
+ORDER BY M.ModelName, A.RegistrationNumber</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="ModelName">
+        <DataField>ModelName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Manufacturer">
+        <DataField>Manufacturer</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="TotalSeats">
+        <DataField>TotalSeats</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="RegistrationNumber">
+        <DataField>RegistrationNumber</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="PilotName">
+        <DataField>PilotName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Position">
+        <DataField>Position</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

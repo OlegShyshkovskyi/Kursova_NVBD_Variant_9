@@ -1,0 +1,3173 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/4/2026 7:11:43 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-HUE1P2NK"
+  DTS:CreatorName="LAPTOP-HUE1P2NK\Shyshk4"
+  DTS:DTSID="{098A3F5D-49A7-4864-A256-1A501B81758C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.2"
+  DTS:LocaleID="1058"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="37"
+  DTS:VersionGUID="{C4684DE8-C84D-4BB7-94F7-290D673AD49F}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-HUE1P2NK\LOCALHOST.AirportDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{81EB82B7-BB47-4DA1-9534-6CC9AFC10E33}"
+      DTS:ObjectName="LAPTOP-HUE1P2NK\LOCALHOST.AirportDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-HUE1P2NK\LOCALHOST;Initial Catalog=AirportDB;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package-{81EB82B7-BB47-4DA1-9534-6CC9AFC10E33}LAPTOP-HUE1P2NK\LOCALHOST.AirportDB;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-HUE1P2NK\LOCALHOST.AirportDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A64808DE-9D34-424D-BA52-E74837F5D1F5}"
+      DTS:ObjectName="LAPTOP-HUE1P2NK\LOCALHOST.AirportDW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-HUE1P2NK\LOCALHOST;Initial Catalog=AirportDW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package-{A64808DE-9D34-424D-BA52-E74837F5D1F5}LAPTOP-HUE1P2NK\LOCALHOST.AirportDW;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT_DimAircrafts"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{CFEB8805-3631-4A9E-B4A6-237C085E8E4B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_DimAircrafts"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_DimAircrafts\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimAircrafts]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_DimAircrafts\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-HUE1P2NK\LOCALHOST.AirportDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-HUE1P2NK\LOCALHOST.AirportDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_DimAircrafts\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_DimAircrafts\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AircraftID_Source]"
+                      cachedDataType="i4"
+                      cachedName="AircraftID_Source"
+                      externalMetadataColumnId="Package\DFT_DimAircrafts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AircraftID_Source]"
+                      lineageId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Output].Columns[AircraftID_Source]" />
+                    <inputColumn
+                      refId="Package\DFT_DimAircrafts\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[RegistrationNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="RegistrationNumber"
+                      externalMetadataColumnId="Package\DFT_DimAircrafts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RegistrationNumber]"
+                      lineageId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Output].Columns[RegistrationNumber]" />
+                    <inputColumn
+                      refId="Package\DFT_DimAircrafts\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ModelName]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="ModelName"
+                      externalMetadataColumnId="Package\DFT_DimAircrafts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModelName]"
+                      lineageId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModelName]" />
+                    <inputColumn
+                      refId="Package\DFT_DimAircrafts\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Manufacturer]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Manufacturer"
+                      externalMetadataColumnId="Package\DFT_DimAircrafts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Manufacturer]"
+                      lineageId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Output].Columns[Manufacturer]" />
+                    <inputColumn
+                      refId="Package\DFT_DimAircrafts\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TotalSeats]"
+                      cachedDataType="i4"
+                      cachedName="TotalSeats"
+                      externalMetadataColumnId="Package\DFT_DimAircrafts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalSeats]"
+                      lineageId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalSeats]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimAircrafts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AircraftKey]"
+                      dataType="i4"
+                      name="AircraftKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimAircrafts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AircraftID_Source]"
+                      dataType="i4"
+                      name="AircraftID_Source" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimAircrafts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RegistrationNumber]"
+                      dataType="wstr"
+                      length="20"
+                      name="RegistrationNumber" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimAircrafts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModelName]"
+                      dataType="wstr"
+                      length="100"
+                      name="ModelName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimAircrafts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Manufacturer]"
+                      dataType="wstr"
+                      length="100"
+                      name="Manufacturer" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimAircrafts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalSeats]"
+                      dataType="i4"
+                      name="TotalSeats" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_DimAircrafts\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_DimAircrafts\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_DimAircrafts\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DimAircrafts\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_DimAircrafts\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DimAircrafts\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_DimAircrafts\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+    a.AircraftID AS AircraftID_Source,
+    a.RegistrationNumber,
+    m.ModelName,
+    m.Manufacturer,
+    m.TotalSeats
+FROM dbo.Aircrafts a
+JOIN dbo.AircraftModels m ON a.ModelID = m.ModelID</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_DimAircrafts\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-HUE1P2NK\LOCALHOST.AirportDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-HUE1P2NK\LOCALHOST.AirportDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Output].Columns[AircraftID_Source]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AircraftID_Source]"
+                      lineageId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Output].Columns[AircraftID_Source]"
+                      name="AircraftID_Source"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Output].Columns[RegistrationNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RegistrationNumber]"
+                      length="20"
+                      lineageId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Output].Columns[RegistrationNumber]"
+                      name="RegistrationNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModelName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ModelName]"
+                      length="100"
+                      lineageId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModelName]"
+                      name="ModelName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Output].Columns[Manufacturer]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Manufacturer]"
+                      length="100"
+                      lineageId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Output].Columns[Manufacturer]"
+                      name="Manufacturer"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalSeats]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalSeats]"
+                      lineageId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalSeats]"
+                      name="TotalSeats"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AircraftID_Source]"
+                      dataType="i4"
+                      name="AircraftID_Source" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RegistrationNumber]"
+                      dataType="wstr"
+                      length="20"
+                      name="RegistrationNumber" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ModelName]"
+                      dataType="wstr"
+                      length="100"
+                      name="ModelName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Manufacturer]"
+                      dataType="wstr"
+                      length="100"
+                      name="Manufacturer" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalSeats]"
+                      dataType="i4"
+                      name="TotalSeats" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AircraftID_Source]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AircraftID_Source]"
+                      name="AircraftID_Source" />
+                    <outputColumn
+                      refId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RegistrationNumber]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RegistrationNumber]"
+                      name="RegistrationNumber" />
+                    <outputColumn
+                      refId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ModelName]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ModelName]"
+                      name="ModelName" />
+                    <outputColumn
+                      refId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Manufacturer]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Manufacturer]"
+                      name="Manufacturer" />
+                    <outputColumn
+                      refId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalSeats]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalSeats]"
+                      name="TotalSeats" />
+                    <outputColumn
+                      refId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_DimAircrafts.Paths[OLE DB Source Output]"
+              endId="Package\DFT_DimAircrafts\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_DimAircrafts\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT_DimEmployees"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{B75CC3AB-446D-4E76-9805-E35F958B2A50}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_DimEmployees"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_DimEmployees\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimEmployees]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_DimEmployees\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-HUE1P2NK\LOCALHOST.AirportDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-HUE1P2NK\LOCALHOST.AirportDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_DimEmployees\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="IgnoreFailure"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_DimEmployees\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[EmployeeID_Source]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeID_Source"
+                      externalMetadataColumnId="Package\DFT_DimEmployees\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeID_Source]"
+                      lineageId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Output].Columns[EmployeeID_Source]" />
+                    <inputColumn
+                      refId="Package\DFT_DimEmployees\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FullName]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="FullName"
+                      externalMetadataColumnId="Package\DFT_DimEmployees\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FullName]"
+                      lineageId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Output].Columns[FullName]" />
+                    <inputColumn
+                      refId="Package\DFT_DimEmployees\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PositionName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="PositionName"
+                      externalMetadataColumnId="Package\DFT_DimEmployees\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PositionName]"
+                      lineageId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Output].Columns[PositionName]" />
+                    <inputColumn
+                      refId="Package\DFT_DimEmployees\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Email]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Email"
+                      externalMetadataColumnId="Package\DFT_DimEmployees\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                      lineageId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Output].Columns[Email]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimEmployees\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeKey]"
+                      dataType="i4"
+                      name="EmployeeKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimEmployees\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeID_Source]"
+                      dataType="i4"
+                      name="EmployeeID_Source" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimEmployees\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FullName]"
+                      dataType="wstr"
+                      length="100"
+                      name="FullName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimEmployees\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PositionName]"
+                      dataType="wstr"
+                      length="50"
+                      name="PositionName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimEmployees\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                      dataType="wstr"
+                      length="100"
+                      name="Email" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_DimEmployees\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_DimEmployees\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_DimEmployees\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DimEmployees\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_DimEmployees\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DimEmployees\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_DimEmployees\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+    e.EmployeeID AS EmployeeID_Source,
+    CAST(e.FirstName + ' ' + e.LastName AS NVARCHAR(100)) AS FullName,
+    CAST(p.PositionName AS NVARCHAR(50)) AS PositionName,
+    CAST(e.Email AS NVARCHAR(100)) AS Email
+FROM dbo.Employees e
+JOIN dbo.Positions p ON e.PositionID = p.PositionID</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_DimEmployees\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-HUE1P2NK\LOCALHOST.AirportDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-HUE1P2NK\LOCALHOST.AirportDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Output].Columns[EmployeeID_Source]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EmployeeID_Source]"
+                      lineageId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Output].Columns[EmployeeID_Source]"
+                      name="EmployeeID_Source"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Output].Columns[FullName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FullName]"
+                      length="100"
+                      lineageId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Output].Columns[FullName]"
+                      name="FullName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Output].Columns[PositionName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PositionName]"
+                      length="50"
+                      lineageId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Output].Columns[PositionName]"
+                      name="PositionName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Output].Columns[Email]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      length="100"
+                      lineageId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Output].Columns[Email]"
+                      name="Email"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EmployeeID_Source]"
+                      dataType="i4"
+                      name="EmployeeID_Source" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FullName]"
+                      dataType="wstr"
+                      length="100"
+                      name="FullName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PositionName]"
+                      dataType="wstr"
+                      length="50"
+                      name="PositionName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      dataType="wstr"
+                      length="100"
+                      name="Email" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EmployeeID_Source]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EmployeeID_Source]"
+                      name="EmployeeID_Source" />
+                    <outputColumn
+                      refId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FullName]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FullName]"
+                      name="FullName" />
+                    <outputColumn
+                      refId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PositionName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PositionName]"
+                      name="PositionName" />
+                    <outputColumn
+                      refId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      name="Email" />
+                    <outputColumn
+                      refId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_DimEmployees.Paths[OLE DB Source Output]"
+              endId="Package\DFT_DimEmployees\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_DimEmployees\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT_DimFlightStatus"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{D1799C57-4A42-489E-AD38-735C8822513C}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_DimFlightStatus"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_DimFlightStatus\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimFlightStatus]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_DimFlightStatus\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-HUE1P2NK\LOCALHOST.AirportDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-HUE1P2NK\LOCALHOST.AirportDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_DimFlightStatus\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_DimFlightStatus\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StatusName]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="StatusName"
+                      externalMetadataColumnId="Package\DFT_DimFlightStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StatusName]"
+                      lineageId="Package\DFT_DimFlightStatus\OLE DB Source.Outputs[OLE DB Source Output].Columns[StatusName]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimFlightStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StatusKey]"
+                      dataType="i4"
+                      name="StatusKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimFlightStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StatusName]"
+                      dataType="wstr"
+                      length="50"
+                      name="StatusName" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_DimFlightStatus\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_DimFlightStatus\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_DimFlightStatus\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DimFlightStatus\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_DimFlightStatus\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DimFlightStatus\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_DimFlightStatus\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT FlightStatus AS StatusName FROM dbo.Departures
+UNION 
+SELECT 'Unknown'</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_DimFlightStatus\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-HUE1P2NK\LOCALHOST.AirportDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-HUE1P2NK\LOCALHOST.AirportDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_DimFlightStatus\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_DimFlightStatus\OLE DB Source.Outputs[OLE DB Source Output].Columns[StatusName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DimFlightStatus\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StatusName]"
+                      length="20"
+                      lineageId="Package\DFT_DimFlightStatus\OLE DB Source.Outputs[OLE DB Source Output].Columns[StatusName]"
+                      name="StatusName"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimFlightStatus\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StatusName]"
+                      dataType="wstr"
+                      length="20"
+                      name="StatusName" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_DimFlightStatus\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_DimFlightStatus\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StatusName]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\DFT_DimFlightStatus\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StatusName]"
+                      name="StatusName" />
+                    <outputColumn
+                      refId="Package\DFT_DimFlightStatus\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DimFlightStatus\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_DimFlightStatus\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DimFlightStatus\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_DimFlightStatus.Paths[OLE DB Source Output]"
+              endId="Package\DFT_DimFlightStatus\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_DimFlightStatus\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT_DimRoutes"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{3A65FA96-4CA3-4C10-86BD-1966FEC34531}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_DimRoutes"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_DimRoutes\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimRoutes]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_DimRoutes\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-HUE1P2NK\LOCALHOST.AirportDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-HUE1P2NK\LOCALHOST.AirportDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_DimRoutes\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[RouteID_Source]"
+                      cachedDataType="i4"
+                      cachedName="RouteID_Source"
+                      externalMetadataColumnId="Package\DFT_DimRoutes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RouteID_Source]"
+                      lineageId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].Columns[RouteID_Source]" />
+                    <inputColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FlightNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="FlightNumber"
+                      externalMetadataColumnId="Package\DFT_DimRoutes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FlightNumber]"
+                      lineageId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].Columns[FlightNumber]" />
+                    <inputColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DepartureCity]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="DepartureCity"
+                      externalMetadataColumnId="Package\DFT_DimRoutes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DepartureCity]"
+                      lineageId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartureCity]" />
+                    <inputColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DepartureCountry]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="DepartureCountry"
+                      externalMetadataColumnId="Package\DFT_DimRoutes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DepartureCountry]"
+                      lineageId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartureCountry]" />
+                    <inputColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ArrivalCity]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="ArrivalCity"
+                      externalMetadataColumnId="Package\DFT_DimRoutes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ArrivalCity]"
+                      lineageId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].Columns[ArrivalCity]" />
+                    <inputColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ArrivalCountry]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="ArrivalCountry"
+                      externalMetadataColumnId="Package\DFT_DimRoutes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ArrivalCountry]"
+                      lineageId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].Columns[ArrivalCountry]" />
+                    <inputColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ScheduledDurationMin]"
+                      cachedDataType="i4"
+                      cachedName="ScheduledDurationMin"
+                      externalMetadataColumnId="Package\DFT_DimRoutes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ScheduledDurationMin]"
+                      lineageId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].Columns[ScheduledDurationMin]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RouteKey]"
+                      dataType="i4"
+                      name="RouteKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RouteID_Source]"
+                      dataType="i4"
+                      name="RouteID_Source" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FlightNumber]"
+                      dataType="wstr"
+                      length="20"
+                      name="FlightNumber" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DepartureCity]"
+                      dataType="wstr"
+                      length="100"
+                      name="DepartureCity" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DepartureCountry]"
+                      dataType="wstr"
+                      length="100"
+                      name="DepartureCountry" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ArrivalCity]"
+                      dataType="wstr"
+                      length="100"
+                      name="ArrivalCity" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ArrivalCountry]"
+                      dataType="wstr"
+                      length="100"
+                      name="ArrivalCountry" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ScheduledDurationMin]"
+                      dataType="i4"
+                      name="ScheduledDurationMin" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_DimRoutes\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_DimRoutes\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DimRoutes\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DimRoutes\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_DimRoutes\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+    r.RouteID AS RouteID_Source,
+    r.FlightNumber,
+    dep.City AS DepartureCity,
+    dep.Country AS DepartureCountry,
+    arr.City AS ArrivalCity,
+    arr.Country AS ArrivalCountry,
+    r.ScheduledDurationMinutes AS ScheduledDurationMin
+FROM dbo.Routes r
+JOIN dbo.Airports dep ON r.DepartureAirportID = dep.AirportID
+JOIN dbo.Airports arr ON r.ArrivalAirportID = arr.AirportID</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_DimRoutes\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-HUE1P2NK\LOCALHOST.AirportDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-HUE1P2NK\LOCALHOST.AirportDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].Columns[RouteID_Source]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RouteID_Source]"
+                      lineageId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].Columns[RouteID_Source]"
+                      name="RouteID_Source"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].Columns[FlightNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FlightNumber]"
+                      length="10"
+                      lineageId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].Columns[FlightNumber]"
+                      name="FlightNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartureCity]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DepartureCity]"
+                      length="100"
+                      lineageId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartureCity]"
+                      name="DepartureCity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartureCountry]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DepartureCountry]"
+                      length="100"
+                      lineageId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartureCountry]"
+                      name="DepartureCountry"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].Columns[ArrivalCity]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ArrivalCity]"
+                      length="100"
+                      lineageId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].Columns[ArrivalCity]"
+                      name="ArrivalCity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].Columns[ArrivalCountry]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ArrivalCountry]"
+                      length="100"
+                      lineageId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].Columns[ArrivalCountry]"
+                      name="ArrivalCountry"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].Columns[ScheduledDurationMin]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ScheduledDurationMin]"
+                      lineageId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].Columns[ScheduledDurationMin]"
+                      name="ScheduledDurationMin"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RouteID_Source]"
+                      dataType="i4"
+                      name="RouteID_Source" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FlightNumber]"
+                      dataType="wstr"
+                      length="10"
+                      name="FlightNumber" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DepartureCity]"
+                      dataType="wstr"
+                      length="100"
+                      name="DepartureCity" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DepartureCountry]"
+                      dataType="wstr"
+                      length="100"
+                      name="DepartureCountry" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ArrivalCity]"
+                      dataType="wstr"
+                      length="100"
+                      name="ArrivalCity" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ArrivalCountry]"
+                      dataType="wstr"
+                      length="100"
+                      name="ArrivalCountry" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ScheduledDurationMin]"
+                      dataType="i4"
+                      name="ScheduledDurationMin" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RouteID_Source]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RouteID_Source]"
+                      name="RouteID_Source" />
+                    <outputColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FlightNumber]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FlightNumber]"
+                      name="FlightNumber" />
+                    <outputColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DepartureCity]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DepartureCity]"
+                      name="DepartureCity" />
+                    <outputColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DepartureCountry]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DepartureCountry]"
+                      name="DepartureCountry" />
+                    <outputColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ArrivalCity]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ArrivalCity]"
+                      name="ArrivalCity" />
+                    <outputColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ArrivalCountry]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ArrivalCountry]"
+                      name="ArrivalCountry" />
+                    <outputColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ScheduledDurationMin]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ScheduledDurationMin]"
+                      name="ScheduledDurationMin" />
+                    <outputColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_DimRoutes.Paths[OLE DB Source Output]"
+              endId="Package\DFT_DimRoutes\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_DimRoutes\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT_FactDepartures"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{4EAB13B2-9E42-429D-A9D3-496147EB7576}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_FactDepartures"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_FactDepartures\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_FactDepartures\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_FactDepartures\Derived Column.Inputs[Derived Column Input].Columns[ActualDepartureDateTime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ActualDepartureDateTime"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[ActualDepartureDateTime]" />
+                    <inputColumn
+                      refId="Package\DFT_FactDepartures\Derived Column.Inputs[Derived Column Input].Columns[TicketsSold]"
+                      cachedDataType="i4"
+                      cachedName="TicketsSold"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[TicketsSold]" />
+                    <inputColumn
+                      refId="Package\DFT_FactDepartures\Derived Column.Inputs[Derived Column Input].Columns[PricePerTicket]"
+                      cachedDataType="numeric"
+                      cachedName="PricePerTicket"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[PricePerTicket]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_FactDepartures\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT_FactDepartures\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\Derived Column.Outputs[Derived Column Output].Columns[Calc_TotalRevenue]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_FactDepartures\Derived Column.Outputs[Derived Column Output].Columns[Calc_TotalRevenue]"
+                      name="Calc_TotalRevenue"
+                      precision="21"
+                      scale="2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[TicketsSold]} * #{Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[PricePerTicket]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TicketsSold * PricePerTicket</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\Derived Column.Outputs[Derived Column Output].Columns[Calc_DateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_FactDepartures\Derived Column.Outputs[Derived Column Output].Columns[Calc_DateKey]"
+                      name="Calc_DateKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I4)((DT_WSTR,4)[YEAR](#{Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[ActualDepartureDateTime]}) + [RIGHT]("0" + (DT_WSTR,2)[MONTH](#{Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[ActualDepartureDateTime]}),2) + [RIGHT]("0" + (DT_WSTR,2)[DAY](#{Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[ActualDepartureDateTime]}),2))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I4)((DT_WSTR,4)YEAR(ActualDepartureDateTime) + RIGHT("0" + (DT_WSTR,2)MONTH(ActualDepartureDateTime),2) + RIGHT("0" + (DT_WSTR,2)DAY(ActualDepartureDateTime),2))</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_FactDepartures\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT_FactDepartures\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_FactDepartures\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_FactDepartures\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_FactDepartures\Lookup Aircraft"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup Aircraft"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimAircrafts]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimAircrafts]) [refTable]
+where [refTable].[AircraftID_Source] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="AircraftKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AircraftID_Source" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="RegistrationNumber" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ModelName" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Manufacturer" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TotalSeats" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[AircraftID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_FactDepartures\Lookup Aircraft.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-HUE1P2NK\LOCALHOST.AirportDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-HUE1P2NK\LOCALHOST.AirportDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_FactDepartures\Lookup Aircraft.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_FactDepartures\Lookup Aircraft.Inputs[Lookup Input].Columns[AircraftID]"
+                      cachedDataType="i4"
+                      cachedName="AircraftID"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[AircraftID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">AircraftID_Source</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_FactDepartures\Lookup Aircraft.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT_FactDepartures\Lookup Aircraft.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\Lookup Aircraft.Outputs[Lookup Match Output].Columns[AircraftKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT_FactDepartures\Lookup Aircraft.Outputs[Lookup Match Output].Columns[AircraftKey]"
+                      name="AircraftKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">AircraftKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_FactDepartures\Lookup Aircraft.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT_FactDepartures\Lookup Aircraft.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_FactDepartures\Lookup Aircraft.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT_FactDepartures\Lookup Aircraft.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\Lookup Aircraft.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_FactDepartures\Lookup Aircraft.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\Lookup Aircraft.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_FactDepartures\Lookup Aircraft.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_FactDepartures\Lookup Routes"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup Routes"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimRoutes]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimRoutes]) [refTable]
+where [refTable].[RouteID_Source] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="RouteKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="RouteID_Source" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FlightNumber" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DepartureCity" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DepartureCountry" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ArrivalCity" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ArrivalCountry" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ScheduledDurationMin" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[RouteID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_FactDepartures\Lookup Routes.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-HUE1P2NK\LOCALHOST.AirportDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-HUE1P2NK\LOCALHOST.AirportDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_FactDepartures\Lookup Routes.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_FactDepartures\Lookup Routes.Inputs[Lookup Input].Columns[RouteID]"
+                      cachedDataType="i4"
+                      cachedName="RouteID"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[RouteID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">RouteID_Source</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_FactDepartures\Lookup Routes.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT_FactDepartures\Lookup Routes.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\Lookup Routes.Outputs[Lookup Match Output].Columns[RouteKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT_FactDepartures\Lookup Routes.Outputs[Lookup Match Output].Columns[RouteKey]"
+                      name="RouteKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">RouteKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_FactDepartures\Lookup Routes.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT_FactDepartures\Lookup Routes.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_FactDepartures\Lookup Routes.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT_FactDepartures\Lookup Routes.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\Lookup Routes.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_FactDepartures\Lookup Routes.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\Lookup Routes.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_FactDepartures\Lookup Routes.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_FactDepartures\Lookup Status"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup Status"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimFlightStatus]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimFlightStatus]) [refTable]
+where [refTable].[StatusName] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="StatusKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="StatusName" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[FlightStatus]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_FactDepartures\Lookup Status.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-HUE1P2NK\LOCALHOST.AirportDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-HUE1P2NK\LOCALHOST.AirportDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_FactDepartures\Lookup Status.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_FactDepartures\Lookup Status.Inputs[Lookup Input].Columns[FlightStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="FlightStatus"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[FlightStatus]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">StatusName</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_FactDepartures\Lookup Status.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT_FactDepartures\Lookup Status.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\Lookup Status.Outputs[Lookup Match Output].Columns[StatusKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT_FactDepartures\Lookup Status.Outputs[Lookup Match Output].Columns[StatusKey]"
+                      name="StatusKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">StatusKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_FactDepartures\Lookup Status.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT_FactDepartures\Lookup Status.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_FactDepartures\Lookup Status.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT_FactDepartures\Lookup Status.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\Lookup Status.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_FactDepartures\Lookup Status.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\Lookup Status.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_FactDepartures\Lookup Status.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_FactDepartures\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FactDepartures]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_FactDepartures\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-HUE1P2NK\LOCALHOST.AirportDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-HUE1P2NK\LOCALHOST.AirportDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_FactDepartures\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TicketsSold]"
+                      cachedDataType="i4"
+                      cachedName="TicketsSold"
+                      externalMetadataColumnId="Package\DFT_FactDepartures\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TicketsSold]"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[TicketsSold]" />
+                    <inputColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AircraftKey]"
+                      cachedDataType="i4"
+                      cachedName="AircraftKey"
+                      externalMetadataColumnId="Package\DFT_FactDepartures\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AircraftKey]"
+                      lineageId="Package\DFT_FactDepartures\Lookup Aircraft.Outputs[Lookup Match Output].Columns[AircraftKey]" />
+                    <inputColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[RouteKey]"
+                      cachedDataType="i4"
+                      cachedName="RouteKey"
+                      externalMetadataColumnId="Package\DFT_FactDepartures\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RouteKey]"
+                      lineageId="Package\DFT_FactDepartures\Lookup Routes.Outputs[Lookup Match Output].Columns[RouteKey]" />
+                    <inputColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StatusKey]"
+                      cachedDataType="i4"
+                      cachedName="StatusKey"
+                      externalMetadataColumnId="Package\DFT_FactDepartures\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StatusKey]"
+                      lineageId="Package\DFT_FactDepartures\Lookup Status.Outputs[Lookup Match Output].Columns[StatusKey]" />
+                    <inputColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Calc_DateKey]"
+                      cachedDataType="i4"
+                      cachedName="Calc_DateKey"
+                      externalMetadataColumnId="Package\DFT_FactDepartures\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      lineageId="Package\DFT_FactDepartures\Derived Column.Outputs[Derived Column Output].Columns[Calc_DateKey]" />
+                    <inputColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Calc_TotalRevenue]"
+                      cachedDataType="numeric"
+                      cachedName="Calc_TotalRevenue"
+                      cachedPrecision="21"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT_FactDepartures\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalRevenue]"
+                      lineageId="Package\DFT_FactDepartures\Derived Column.Outputs[Derived Column Output].Columns[Calc_TotalRevenue]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FactKey]"
+                      dataType="i8"
+                      name="FactKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      dataType="i4"
+                      name="DateKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AircraftKey]"
+                      dataType="i4"
+                      name="AircraftKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RouteKey]"
+                      dataType="i4"
+                      name="RouteKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StatusKey]"
+                      dataType="i4"
+                      name="StatusKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TicketsSold]"
+                      dataType="i4"
+                      name="TicketsSold" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalRevenue]"
+                      dataType="numeric"
+                      name="TotalRevenue"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DelayMinutes]"
+                      dataType="i4"
+                      name="DelayMinutes" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LoadedDate]"
+                      dataType="dbTimeStamp"
+                      name="LoadedDate" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_FactDepartures\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_FactDepartures\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_FactDepartures\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+    DepartureID,
+    RouteID,
+    AircraftID,
+    FlightStatus,
+    ActualDepartureDateTime,
+    TicketsSold,
+    PricePerTicket
+FROM dbo.Departures
+WHERE ActualDepartureDateTime IS NOT NULL</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_FactDepartures\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-HUE1P2NK\LOCALHOST.AirportDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-HUE1P2NK\LOCALHOST.AirportDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartureID]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DepartureID]"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartureID]"
+                      name="DepartureID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[RouteID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RouteID]"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[RouteID]"
+                      name="RouteID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[AircraftID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AircraftID]"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[AircraftID]"
+                      name="AircraftID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[FlightStatus]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FlightStatus]"
+                      length="20"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[FlightStatus]"
+                      name="FlightStatus"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[ActualDepartureDateTime]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ActualDepartureDateTime]"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[ActualDepartureDateTime]"
+                      name="ActualDepartureDateTime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[TicketsSold]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TicketsSold]"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[TicketsSold]"
+                      name="TicketsSold"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[PricePerTicket]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PricePerTicket]"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[PricePerTicket]"
+                      name="PricePerTicket"
+                      precision="10"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DepartureID]"
+                      dataType="i8"
+                      name="DepartureID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RouteID]"
+                      dataType="i4"
+                      name="RouteID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AircraftID]"
+                      dataType="i4"
+                      name="AircraftID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FlightStatus]"
+                      dataType="wstr"
+                      length="20"
+                      name="FlightStatus" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ActualDepartureDateTime]"
+                      dataType="dbTimeStamp"
+                      name="ActualDepartureDateTime" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TicketsSold]"
+                      dataType="i4"
+                      name="TicketsSold" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PricePerTicket]"
+                      dataType="numeric"
+                      name="PricePerTicket"
+                      precision="10"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DepartureID]"
+                      dataType="i8"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DepartureID]"
+                      name="DepartureID" />
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RouteID]"
+                      dataType="i4"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RouteID]"
+                      name="RouteID" />
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AircraftID]"
+                      dataType="i4"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AircraftID]"
+                      name="AircraftID" />
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FlightStatus]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FlightStatus]"
+                      name="FlightStatus" />
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ActualDepartureDateTime]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ActualDepartureDateTime]"
+                      name="ActualDepartureDateTime" />
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TicketsSold]"
+                      dataType="i4"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TicketsSold]"
+                      name="TicketsSold" />
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PricePerTicket]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PricePerTicket]"
+                      name="PricePerTicket"
+                      precision="10"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_FactDepartures.Paths[Derived Column Output]"
+              endId="Package\DFT_FactDepartures\Lookup Aircraft.Inputs[Lookup Input]"
+              name="Derived Column Output"
+              startId="Package\DFT_FactDepartures\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT_FactDepartures.Paths[Lookup Match Output]"
+              endId="Package\DFT_FactDepartures\Lookup Routes.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT_FactDepartures\Lookup Aircraft.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT_FactDepartures.Paths[Lookup Match Output1]"
+              endId="Package\DFT_FactDepartures\Lookup Status.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT_FactDepartures\Lookup Routes.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT_FactDepartures.Paths[Lookup Match Output2]"
+              endId="Package\DFT_FactDepartures\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT_FactDepartures\Lookup Status.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT_FactDepartures.Paths[OLE DB Source Output]"
+              endId="Package\DFT_FactDepartures\Derived Column.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{6F53907A-3817-4B45-85F9-61575C16EC3E}"
+      DTS:From="Package\DFT_DimFlightStatus"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DFT_DimAircrafts" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{EB9126BC-F1D7-4758-BBF4-00B24521A966}"
+      DTS:From="Package\DFT_DimAircrafts"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DFT_DimRoutes" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{D74CEB04-2733-41E3-8555-3BACB8D4FBDF}"
+      DTS:From="Package\DFT_DimRoutes"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\DFT_DimEmployees" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{545B3E0F-C02D-45BD-90F2-EC87FA7381CF}"
+      DTS:From="Package\DFT_DimEmployees"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\DFT_FactDepartures" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="160.8,41.6"
+          Id="Package\DFT_DimAircrafts"
+          TopLeft="57.1428572644995,104.423529328648" />
+        <NodeLayout
+          Size="172,41.6"
+          Id="Package\DFT_DimEmployees"
+          TopLeft="234.285714784447,33.423529453993" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\DFT_DimFlightStatus"
+          TopLeft="45.000000095793,35.59999997721" />
+        <NodeLayout
+          Size="154.4,41.6"
+          Id="Package\DFT_DimRoutes"
+          TopLeft="242.857143374122,102.67058817966" />
+        <NodeLayout
+          Size="175.2,41.6"
+          Id="Package\DFT_FactDepartures"
+          TopLeft="450.000000957932,31.9764705118218" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="135.471428680146,77.19999997721">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27.2235293514378"
+              Start="0,0"
+              End="0,19.7235293514378">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.7235293514378" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="217.942857264499,124.347058754154">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="24.9142861096221,0"
+              Start="0,0"
+              End="17.4142861096221,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="17.4142861096221,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="320.171429079284,102.67058817966">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,-27.6470587256667"
+              Start="0,0"
+              End="0,-20.1470587256667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-20.1470587256667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="406.285714784447,53.4999999829074">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="43.7142861734849,0"
+              Start="0,0"
+              End="36.2142861734849,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="36.2142861734849,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT_DimAircrafts">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\DFT_DimAircrafts\OLE DB Source"
+          TopLeft="399.999994039536,104.999998435378" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\DFT_DimAircrafts\OLE DB Destination"
+          TopLeft="393.999994128942,185.999997228384" />
+        <EdgeLayout
+          Id="Package\DFT_DimAircrafts.Paths[OLE DB Source Output]"
+          TopLeft="476.999994084239,146.599998435378">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39.399998793006"
+              Start="0,0"
+              End="0,31.899998793006">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.899998793006" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_DimAircrafts\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_DimAircrafts\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT_DimEmployees">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\DFT_DimEmployees\OLE DB Destination"
+          TopLeft="367.999994516373,195.999997079372" />
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\DFT_DimEmployees\OLE DB Source"
+          TopLeft="372.999994441867,97.9999985396862" />
+        <EdgeLayout
+          Id="Package\DFT_DimEmployees.Paths[OLE DB Source Output]"
+          TopLeft="450.49999447912,139.599998539686">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56.3999985396858"
+              Start="0,0"
+              End="0,48.8999985396858">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.8999985396858" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_DimEmployees\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_DimEmployees\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT_DimFlightStatus">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\DFT_DimFlightStatus\OLE DB Destination"
+          TopLeft="277.142857732821,162.117646916721" />
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\DFT_DimFlightStatus\OLE DB Source"
+          TopLeft="287.142857754109,77.99999993163" />
+        <EdgeLayout
+          Id="Package\DFT_DimFlightStatus.Paths[OLE DB Source Output]"
+          TopLeft="362.142857743465,119.59999993163">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.5176469850911"
+              Start="0,0"
+              End="0,35.0176469850911">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.0176469850911" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_DimFlightStatus\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_DimFlightStatus\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT_DimRoutes">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\DFT_DimRoutes\OLE DB Source"
+          TopLeft="382.999994292855,38.9999994188547" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\DFT_DimRoutes\OLE DB Destination"
+          TopLeft="365.999994546175,141.999997884035" />
+        <EdgeLayout
+          Id="Package\DFT_DimRoutes.Paths[OLE DB Source Output]"
+          TopLeft="454.499994419515,80.5999994188547">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61.3999984651805"
+              Start="0,0"
+              End="0,53.8999984651805">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.8999984651805" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_DimRoutes\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_DimRoutes\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT_FactDepartures">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\DFT_FactDepartures\OLE DB Source"
+          TopLeft="101.999998480082,63.9999990463257" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\DFT_FactDepartures\OLE DB Destination"
+          TopLeft="508.923070504115,140.076920989614" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\DFT_FactDepartures\Derived Column"
+          TopLeft="98.999998524785,138.999997928739" />
+        <EdgeLayout
+          Id="Package\DFT_FactDepartures.Paths[OLE DB Source Output]"
+          TopLeft="176.099998502433,105.599999046326">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.3999988824129"
+              Start="0,0"
+              End="0,25.8999988824129">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.8999988824129" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\DFT_FactDepartures\Lookup Aircraft"
+          TopLeft="323.999995172024,138.999997928739" />
+        <EdgeLayout
+          Id="Package\DFT_FactDepartures.Paths[Derived Column Output]"
+          TopLeft="251.799998524785,159.799997928739">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="72.1999966472389,0"
+              Start="0,0"
+              End="64.6999966472389,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="64.6999966472389,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="148,41.6"
+          Id="Package\DFT_FactDepartures\Lookup Routes"
+          TopLeft="326.99999512732,62.9999990612268" />
+        <EdgeLayout
+          Id="Package\DFT_FactDepartures.Paths[Lookup Match Output]"
+          TopLeft="399.899995149672,138.999997928739">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,-34.3999988675119"
+              Start="0,0"
+              End="0,-26.8999988675119">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-26.8999988675119" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,-19.2546869337559,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="144.8,42.4"
+          Id="Package\DFT_FactDepartures\Lookup Status"
+          TopLeft="519.230761493628,64.6153836525404" />
+        <EdgeLayout
+          Id="Package\DFT_FactDepartures.Paths[Lookup Match Output1]"
+          TopLeft="474.99999512732,84.8076913568836">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="44.2307663663075,0"
+              Start="0,0"
+              End="36.7307663663075,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="36.7307663663075,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-29.8260035355962,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_FactDepartures.Paths[Lookup Match Output2]"
+          TopLeft="592.876915998872,107.01538365254">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.0615373370738"
+              Start="0,0"
+              End="0,25.5615373370738">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5615373370738" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,6.97608116853691,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_FactDepartures\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_FactDepartures\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_FactDepartures\Lookup Aircraft">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimAircrafts]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_FactDepartures\Lookup Routes">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimRoutes]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_FactDepartures\Lookup Status">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimFlightStatus]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

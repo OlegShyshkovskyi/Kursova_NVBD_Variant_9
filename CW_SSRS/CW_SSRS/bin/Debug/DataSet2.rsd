@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet2">
+    <Query>
+      <DataSourceReference>DataSource2</DataSourceReference>
+      <CommandText>SELECT 
+    NON EMPTY { [Measures].[Fact Departures Count] } ON COLUMNS, 
+    NON EMPTY { ([Dim Flight Status].[Status Name].[Status Name].ALLMEMBERS ) } ON ROWS 
+FROM [Airport Cube]</CommandText>
+      <rd:DesignerState>
+        <QueryDefinition xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+          <CommandType>MDX</CommandType>
+          <Type>Query</Type>
+          <QuerySpecification xsi:type="MDXQuerySpecification">
+            <Select>
+              <Items>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Flight Status</DimensionName>
+                    <HierarchyName>Status Name</HierarchyName>
+                    <HierarchyUniqueName>[Dim Flight Status].[Status Name]</HierarchyUniqueName>
+                    <LevelName>Status Name</LevelName>
+                    <UniqueName>[Dim Flight Status].[Status Name].[Status Name]</UniqueName>
+                  </ID>
+                  <ItemCaption>Status Name</ItemCaption>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>Fact Departures Count</MeasureName>
+                    <UniqueName>[Measures].[Fact Departures Count]</UniqueName>
+                  </ID>
+                  <ItemCaption>Fact Departures Count</ItemCaption>
+                  <FormattedValue>true</FormattedValue>
+                </Item>
+              </Items>
+            </Select>
+            <AutoExecute>false</AutoExecute>
+            <From>Airport Cube</From>
+            <Filter>
+              <FilterItems />
+            </Filter>
+            <Calculations />
+            <Aggregates />
+            <QueryProperties />
+          </QuerySpecification>
+          <Query>
+            <Statement>SELECT 
+    NON EMPTY { [Measures].[Fact Departures Count] } ON COLUMNS, 
+    NON EMPTY { ([Dim Flight Status].[Status Name].[Status Name].ALLMEMBERS ) } ON ROWS 
+FROM [Airport Cube]</Statement>
+            <ParameterDefinitions />
+          </Query>
+        </QueryDefinition>
+      </rd:DesignerState>
+    </Query>
+    <Fields>
+      <Field Name="Status_Name">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Level" UniqueName="[Dim Flight Status].[Status Name].[Status Name]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Fact_Departures_Count">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Measure" UniqueName="[Measures].[Fact Departures Count]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>
