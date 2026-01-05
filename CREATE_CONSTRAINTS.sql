@@ -1,17 +1,16 @@
-USE Airport_DW;
+USE AirportDW;
 GO
 
-ALTER TABLE FactDepartures
-ADD CONSTRAINT FK_Fact_Date FOREIGN KEY (DateKey)
+ALTER TABLE dbo.FactDepartures 
+ADD CONSTRAINT FK_Fact_Date FOREIGN KEY (DateKey) 
 REFERENCES DimDate(DateKey);
 GO
 
-ALTER TABLE FactDepartures
-ADD CONSTRAINT FK_Fact_Route FOREIGN KEY (RouteID)
-REFERENCES DimRoutes(RouteID);
+ALTER TABLE dbo.FactDepartures 
+ADD CONSTRAINT FK_Fact_Route FOREIGN KEY (RouteKey) 
+REFERENCES DimRoutes(RouteKey);
 GO
 
-ALTER TABLE FactDepartures
-ADD CONSTRAINT FK_Fact_Aircraft FOREIGN KEY (AircraftID)
-REFERENCES DimAircrafts(AircraftID);
+ALTER TABLE dbo.FactDepartures 
+ADD CONSTRAINT CHK_Revenue CHECK (TotalRevenue >= 0);
 GO
