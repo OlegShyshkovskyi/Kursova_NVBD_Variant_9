@@ -68,7 +68,7 @@
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Cube</Type>
-        <TimeStamp>qhsrAtICbhF+7zUi6guo2OhRqDY=05.01.2026 17:52:4405.01.2026 16:17:21wKMGGzv47gLWs894BD9FE7vNzko=05.01.2026 16:17:2105.01.2026 16:17:21</TimeStamp>
+        <TimeStamp>51r7CM81LuqVjsvlUoUbkGYcWM4=07.01.2026 2:33:2305.01.2026 16:17:21wKMGGzv47gLWs894BD9FE7vNzko=05.01.2026 16:17:2105.01.2026 16:17:21</TimeStamp>
         <ID>
           <String>Airport Cube</String>
         </ID>
@@ -85,5 +85,5 @@
   </Snapshot>
   <AssemblyLocations />
   <ProcessingComplete>true</ProcessingComplete>
-  <LastDeployed>2026-01-05T17:37:40.93Z</LastDeployed>
+  <LastDeployed>2026-01-07T00:33:44.52Z</LastDeployed>
 </DeploymentSnapshot>

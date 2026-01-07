@@ -3,24 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSRS\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7CEEA669-C900-39F8-EB3E-7A4895FBF887}|CW_SSRS\\CW_SSRS.rptproj|C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSRS\\CW_SSRS\\Report5.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}",
-      "RelativeMoniker": "D:0:0:{7CEEA669-C900-39F8-EB3E-7A4895FBF887}|CW_SSRS\\CW_SSRS.rptproj|solutionrelative:CW_SSRS\\Report5.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7CEEA669-C900-39F8-EB3E-7A4895FBF887}|CW_SSRS\\CW_SSRS.rptproj|C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSRS\\CW_SSRS\\Report4.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}",
-      "RelativeMoniker": "D:0:0:{7CEEA669-C900-39F8-EB3E-7A4895FBF887}|CW_SSRS\\CW_SSRS.rptproj|solutionrelative:CW_SSRS\\Report4.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7CEEA669-C900-39F8-EB3E-7A4895FBF887}|CW_SSRS\\CW_SSRS.rptproj|C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSRS\\CW_SSRS\\Report3.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}",
-      "RelativeMoniker": "D:0:0:{7CEEA669-C900-39F8-EB3E-7A4895FBF887}|CW_SSRS\\CW_SSRS.rptproj|solutionrelative:CW_SSRS\\Report3.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7CEEA669-C900-39F8-EB3E-7A4895FBF887}|CW_SSRS\\CW_SSRS.rptproj|C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSRS\\CW_SSRS\\Report2.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}",
       "RelativeMoniker": "D:0:0:{7CEEA669-C900-39F8-EB3E-7A4895FBF887}|CW_SSRS\\CW_SSRS.rptproj|solutionrelative:CW_SSRS\\Report2.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7CEEA669-C900-39F8-EB3E-7A4895FBF887}|CW_SSRS\\CW_SSRS.rptproj|C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSRS\\CW_SSRS\\Report1.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}",
       "RelativeMoniker": "D:0:0:{7CEEA669-C900-39F8-EB3E-7A4895FBF887}|CW_SSRS\\CW_SSRS.rptproj|solutionrelative:CW_SSRS\\Report1.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7CEEA669-C900-39F8-EB3E-7A4895FBF887}|CW_SSRS\\CW_SSRS.rptproj|C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSRS\\CW_SSRS\\Report3.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}",
+      "RelativeMoniker": "D:0:0:{7CEEA669-C900-39F8-EB3E-7A4895FBF887}|CW_SSRS\\CW_SSRS.rptproj|solutionrelative:CW_SSRS\\Report3.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7CEEA669-C900-39F8-EB3E-7A4895FBF887}|CW_SSRS\\CW_SSRS.rptproj|C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSRS\\CW_SSRS\\Report4.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}",
+      "RelativeMoniker": "D:0:0:{7CEEA669-C900-39F8-EB3E-7A4895FBF887}|CW_SSRS\\CW_SSRS.rptproj|solutionrelative:CW_SSRS\\Report4.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7CEEA669-C900-39F8-EB3E-7A4895FBF887}|CW_SSRS\\CW_SSRS.rptproj|C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSRS\\CW_SSRS\\Report5.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}",
+      "RelativeMoniker": "D:0:0:{7CEEA669-C900-39F8-EB3E-7A4895FBF887}|CW_SSRS\\CW_SSRS.rptproj|solutionrelative:CW_SSRS\\Report5.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,47 +30,44 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "Report5.rdl [Design]",
               "DocumentMoniker": "C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSRS\\CW_SSRS\\Report5.rdl",
               "RelativeDocumentMoniker": "CW_SSRS\\Report5.rdl",
-              "ToolTip": "C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSRS\\CW_SSRS\\Report5.rdl [Design]*",
-              "RelativeToolTip": "CW_SSRS\\Report5.rdl [Design]*",
+              "ToolTip": "C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSRS\\CW_SSRS\\Report5.rdl [Design]",
+              "RelativeToolTip": "CW_SSRS\\Report5.rdl [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-01-05T22:32:26.641Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-01-05T22:32:26.641Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Report4.rdl [Design]",
               "DocumentMoniker": "C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSRS\\CW_SSRS\\Report4.rdl",
               "RelativeDocumentMoniker": "CW_SSRS\\Report4.rdl",
               "ToolTip": "C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSRS\\CW_SSRS\\Report4.rdl [Design]",
               "RelativeToolTip": "CW_SSRS\\Report4.rdl [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-01-05T22:11:40.152Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-01-05T22:11:40.152Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "Report1.rdl [Design]",
               "DocumentMoniker": "C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSRS\\CW_SSRS\\Report1.rdl",
               "RelativeDocumentMoniker": "CW_SSRS\\Report1.rdl",
               "ToolTip": "C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSRS\\CW_SSRS\\Report1.rdl [Design]",
               "RelativeToolTip": "CW_SSRS\\Report1.rdl [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-01-05T21:38:36.527Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-01-05T21:38:36.527Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Report2.rdl [Design]",
               "DocumentMoniker": "C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSRS\\CW_SSRS\\Report2.rdl",
               "RelativeDocumentMoniker": "CW_SSRS\\Report2.rdl",
@@ -89,8 +86,7 @@
               "ToolTip": "C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSRS\\CW_SSRS\\Report3.rdl [Design]",
               "RelativeToolTip": "CW_SSRS\\Report3.rdl [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-01-05T21:38:22.153Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-01-05T21:38:22.153Z"
             }
           ]
         }

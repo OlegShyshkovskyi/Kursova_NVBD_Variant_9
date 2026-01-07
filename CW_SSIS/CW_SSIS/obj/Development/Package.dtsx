@@ -11,8 +11,8 @@
   DTS:LocaleID="1058"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="37"
-  DTS:VersionGUID="{C4684DE8-C84D-4BB7-94F7-290D673AD49F}">
+  DTS:VersionBuild="46"
+  DTS:VersionGUID="{10E92612-9C08-4A34-9574-1AC2BE27BD81}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1499,6 +1499,180 @@ JOIN dbo.Airports arr ON r.ArrivalAirportID = arr.AirportID</property>
           version="1">
           <components>
             <component
+              refId="Package\DFT_FactDepartures\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_FactDepartures\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_FactDepartures\Conditional Split.Inputs[Conditional Split Input].Columns[RouteID]"
+                      cachedDataType="i4"
+                      cachedName="RouteID"
+                      lineageId="Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[RouteID]" />
+                    <inputColumn
+                      refId="Package\DFT_FactDepartures\Conditional Split.Inputs[Conditional Split Input].Columns[AircraftID]"
+                      cachedDataType="i4"
+                      cachedName="AircraftID"
+                      lineageId="Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[AircraftID]" />
+                    <inputColumn
+                      refId="Package\DFT_FactDepartures\Conditional Split.Inputs[Conditional Split Input].Columns[OLE DB Source.TicketsSold]"
+                      cachedDataType="i4"
+                      cachedName="OLE DB Source.TicketsSold"
+                      lineageId="Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[OLE DB Source.TicketsSold]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_FactDepartures\Conditional Split.Outputs[Bad Data]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Bad Data"
+                  synchronousInputId="Package\DFT_FactDepartures\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[RouteID]}) || [ISNULL](#{Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[AircraftID]}) || #{Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[OLE DB Source.TicketsSold]} &lt; 0</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(RouteID) || ISNULL(AircraftID) || TicketsSold &lt; 0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_FactDepartures\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\DFT_FactDepartures\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_FactDepartures\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\DFT_FactDepartures\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_FactDepartures\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_FactDepartures\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_FactDepartures\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_FactDepartures\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_FactDepartures\Data Conversion.Inputs[Data Conversion Input].Columns[TicketsSold]"
+                      cachedDataType="i4"
+                      cachedName="TicketsSold"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[TicketsSold]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_FactDepartures\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\DFT_FactDepartures\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\Data Conversion.Outputs[Data Conversion Output].Columns[TicketsSold]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_FactDepartures\Data Conversion.Outputs[Data Conversion Output].Columns[TicketsSold]"
+                      name="TicketsSold"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[TicketsSold]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_FactDepartures\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\DFT_FactDepartures\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_FactDepartures\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_FactDepartures\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\DFT_FactDepartures\Derived Column"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -1515,19 +1689,20 @@ JOIN dbo.Airports arr ON r.ArrivalAirportID = arr.AirportID</property>
                       refId="Package\DFT_FactDepartures\Derived Column.Inputs[Derived Column Input].Columns[ActualDepartureDateTime]"
                       cachedDataType="dbTimeStamp"
                       cachedName="ActualDepartureDateTime"
-                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[ActualDepartureDateTime]" />
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[ActualDepartureDateTime]" />
                     <inputColumn
-                      refId="Package\DFT_FactDepartures\Derived Column.Inputs[Derived Column Input].Columns[TicketsSold]"
+                      refId="Package\DFT_FactDepartures\Derived Column.Inputs[Derived Column Input].Columns[OLE DB Source.TicketsSold]"
                       cachedDataType="i4"
-                      cachedName="TicketsSold"
-                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[TicketsSold]" />
+                      cachedName="OLE DB Source.TicketsSold"
+                      lineageId="Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[OLE DB Source.TicketsSold]" />
                     <inputColumn
                       refId="Package\DFT_FactDepartures\Derived Column.Inputs[Derived Column Input].Columns[PricePerTicket]"
                       cachedDataType="numeric"
                       cachedName="PricePerTicket"
                       cachedPrecision="10"
                       cachedScale="2"
-                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[PricePerTicket]" />
+                      lineageId="Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[PricePerTicket]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1555,7 +1730,7 @@ JOIN dbo.Airports arr ON r.ArrivalAirportID = arr.AirportID</property>
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">#{Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[TicketsSold]} * #{Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[PricePerTicket]}</property>
+                          name="Expression">#{Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[OLE DB Source.TicketsSold]} * #{Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[PricePerTicket]}</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -1577,7 +1752,7 @@ JOIN dbo.Airports arr ON r.ArrivalAirportID = arr.AirportID</property>
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">(DT_I4)((DT_WSTR,4)[YEAR](#{Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[ActualDepartureDateTime]}) + [RIGHT]("0" + (DT_WSTR,2)[MONTH](#{Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[ActualDepartureDateTime]}),2) + [RIGHT]("0" + (DT_WSTR,2)[DAY](#{Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[ActualDepartureDateTime]}),2))</property>
+                          name="Expression">(DT_I4)((DT_WSTR,4)[YEAR](#{Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[ActualDepartureDateTime]}) + [RIGHT]("0" + (DT_WSTR,2)[MONTH](#{Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[ActualDepartureDateTime]}),2) + [RIGHT]("0" + (DT_WSTR,2)[DAY](#{Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[ActualDepartureDateTime]}),2))</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -1698,7 +1873,7 @@ where [refTable].[AircraftID_Source] = ?</property>
                       refId="Package\DFT_FactDepartures\Lookup Aircraft.Inputs[Lookup Input].Columns[AircraftID]"
                       cachedDataType="i4"
                       cachedName="AircraftID"
-                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[AircraftID]">
+                      lineageId="Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[AircraftID]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -1856,7 +2031,7 @@ where [refTable].[RouteID_Source] = ?</property>
                       refId="Package\DFT_FactDepartures\Lookup Routes.Inputs[Lookup Input].Columns[RouteID]"
                       cachedDataType="i4"
                       cachedName="RouteID"
-                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[RouteID]">
+                      lineageId="Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[RouteID]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -2015,7 +2190,7 @@ where [refTable].[StatusName] = ?</property>
                       cachedDataType="wstr"
                       cachedLength="20"
                       cachedName="FlightStatus"
-                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[FlightStatus]">
+                      lineageId="Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[FlightStatus]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -2162,11 +2337,11 @@ where [refTable].[StatusName] = ?</property>
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT_FactDepartures\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TicketsSold]"
+                      refId="Package\DFT_FactDepartures\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OLE DB Source.TicketsSold]"
                       cachedDataType="i4"
-                      cachedName="TicketsSold"
+                      cachedName="OLE DB Source.TicketsSold"
                       externalMetadataColumnId="Package\DFT_FactDepartures\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TicketsSold]"
-                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[TicketsSold]" />
+                      lineageId="Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[OLE DB Source.TicketsSold]" />
                     <inputColumn
                       refId="Package\DFT_FactDepartures\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AircraftKey]"
                       cachedDataType="i4"
@@ -2500,8 +2675,267 @@ WHERE ActualDepartureDateTime IS NOT NULL</property>
                 </output>
               </outputs>
             </component>
+            <component
+              refId="Package\DFT_FactDepartures\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT_FactDepartures\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_FactDepartures\Sort.Inputs[Sort Input].Columns[DepartureID]"
+                      cachedDataType="i8"
+                      cachedName="DepartureID"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartureID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_FactDepartures\Sort.Inputs[Sort Input].Columns[RouteID]"
+                      cachedDataType="i4"
+                      cachedName="RouteID"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[RouteID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_FactDepartures\Sort.Inputs[Sort Input].Columns[AircraftID]"
+                      cachedDataType="i4"
+                      cachedName="AircraftID"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[AircraftID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_FactDepartures\Sort.Inputs[Sort Input].Columns[FlightStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="FlightStatus"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[FlightStatus]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_FactDepartures\Sort.Inputs[Sort Input].Columns[ActualDepartureDateTime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ActualDepartureDateTime"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[ActualDepartureDateTime]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_FactDepartures\Sort.Inputs[Sort Input].Columns[TicketsSold]"
+                      cachedDataType="i4"
+                      cachedName="TicketsSold"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[TicketsSold]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_FactDepartures\Sort.Inputs[Sort Input].Columns[PricePerTicket]"
+                      cachedDataType="numeric"
+                      cachedName="PricePerTicket"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      lineageId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[PricePerTicket]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_FactDepartures\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[DepartureID]"
+                      dataType="i8"
+                      lineageId="Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[DepartureID]"
+                      name="DepartureID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartureID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[RouteID]"
+                      dataType="i4"
+                      lineageId="Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[RouteID]"
+                      name="RouteID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[RouteID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[AircraftID]"
+                      dataType="i4"
+                      lineageId="Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[AircraftID]"
+                      name="AircraftID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[AircraftID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[FlightStatus]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[FlightStatus]"
+                      name="FlightStatus">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[FlightStatus]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[ActualDepartureDateTime]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[ActualDepartureDateTime]"
+                      name="ActualDepartureDateTime"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[ActualDepartureDateTime]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[OLE DB Source.TicketsSold]"
+                      dataType="i4"
+                      lineageId="Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[OLE DB Source.TicketsSold]"
+                      name="OLE DB Source.TicketsSold">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[TicketsSold]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[PricePerTicket]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_FactDepartures\Sort.Outputs[Sort Output].Columns[PricePerTicket]"
+                      name="PricePerTicket"
+                      precision="10"
+                      scale="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output].Columns[PricePerTicket]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
           </components>
           <paths>
+            <path
+              refId="Package\DFT_FactDepartures.Paths[Conditional Split Default Output]"
+              endId="Package\DFT_FactDepartures\Derived Column.Inputs[Derived Column Input]"
+              name="Conditional Split Default Output"
+              startId="Package\DFT_FactDepartures\Conditional Split.Outputs[Conditional Split Default Output]" />
+            <path
+              refId="Package\DFT_FactDepartures.Paths[Data Conversion Output]"
+              endId="Package\DFT_FactDepartures\Sort.Inputs[Sort Input]"
+              name="Data Conversion Output"
+              startId="Package\DFT_FactDepartures\Data Conversion.Outputs[Data Conversion Output]" />
             <path
               refId="Package\DFT_FactDepartures.Paths[Derived Column Output]"
               endId="Package\DFT_FactDepartures\Lookup Aircraft.Inputs[Lookup Input]"
@@ -2524,9 +2958,14 @@ WHERE ActualDepartureDateTime IS NOT NULL</property>
               startId="Package\DFT_FactDepartures\Lookup Status.Outputs[Lookup Match Output]" />
             <path
               refId="Package\DFT_FactDepartures.Paths[OLE DB Source Output]"
-              endId="Package\DFT_FactDepartures\Derived Column.Inputs[Derived Column Input]"
+              endId="Package\DFT_FactDepartures\Data Conversion.Inputs[Data Conversion Input]"
               name="OLE DB Source Output"
               startId="Package\DFT_FactDepartures\OLE DB Source.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_FactDepartures.Paths[Sort Output]"
+              endId="Package\DFT_FactDepartures\Conditional Split.Inputs[Conditional Split Input]"
+              name="Sort Output"
+              startId="Package\DFT_FactDepartures\Sort.Outputs[Sort Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -2693,7 +3132,7 @@ WHERE ActualDepartureDateTime IS NOT NULL</property>
     design-time-name="Package\DFT_DimAircrafts">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="149.6,41.6"
           Id="Package\DFT_DimAircrafts\OLE DB Source"
@@ -2721,9 +3160,7 @@ WHERE ActualDepartureDateTime IS NOT NULL</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2813,7 +3250,7 @@ WHERE ActualDepartureDateTime IS NOT NULL</property>
     design-time-name="Package\DFT_DimFlightStatus">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="170.4,41.6"
           Id="Package\DFT_DimFlightStatus\OLE DB Destination"
@@ -2841,9 +3278,7 @@ WHERE ActualDepartureDateTime IS NOT NULL</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2874,7 +3309,7 @@ WHERE ActualDepartureDateTime IS NOT NULL</property>
     design-time-name="Package\DFT_DimRoutes">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="149.6,41.6"
           Id="Package\DFT_DimRoutes\OLE DB Source"
@@ -2902,9 +3337,7 @@ WHERE ActualDepartureDateTime IS NOT NULL</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2935,144 +3368,224 @@ WHERE ActualDepartureDateTime IS NOT NULL</property>
     design-time-name="Package\DFT_FactDepartures">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="149.6,41.6"
-          Id="Package\DFT_FactDepartures\OLE DB Source"
-          TopLeft="101.999998480082,63.9999990463257" />
-        <NodeLayout
-          Size="170.4,41.6"
-          Id="Package\DFT_FactDepartures\OLE DB Destination"
-          TopLeft="508.923070504115,140.076920989614" />
-        <NodeLayout
-          Size="152.8,41.6"
-          Id="Package\DFT_FactDepartures\Derived Column"
-          TopLeft="98.999998524785,138.999997928739" />
-        <EdgeLayout
-          Id="Package\DFT_FactDepartures.Paths[OLE DB Source Output]"
-          TopLeft="176.099998502433,105.599999046326">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,33.3999988824129"
-              Start="0,0"
-              End="0,25.8999988824129">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.8999988824129" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="149.6,41.6"
-          Id="Package\DFT_FactDepartures\Lookup Aircraft"
-          TopLeft="323.999995172024,138.999997928739" />
-        <EdgeLayout
-          Id="Package\DFT_FactDepartures.Paths[Derived Column Output]"
-          TopLeft="251.799998524785,159.799997928739">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="72.1999966472389,0"
-              Start="0,0"
-              End="64.6999966472389,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="64.6999966472389,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="155.2,41.6"
+          Id="Package\DFT_FactDepartures\Data Conversion"
+          TopLeft="187.999997198582,79.9999988079071" />
         <NodeLayout
           Size="148,41.6"
           Id="Package\DFT_FactDepartures\Lookup Routes"
-          TopLeft="326.99999512732,62.9999990612268" />
-        <EdgeLayout
-          Id="Package\DFT_FactDepartures.Paths[Lookup Match Output]"
-          TopLeft="399.899995149672,138.999997928739">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,-34.3999988675119"
-              Start="0,0"
-              End="0,-26.8999988675119">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-26.8999988675119" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,-19.2546869337559,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="388.999994203448,221.999996691942" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\DFT_FactDepartures\OLE DB Destination"
+          TopLeft="367.923072605179,73.0769219879918" />
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\DFT_FactDepartures\OLE DB Source"
+          TopLeft="196.999997064472,6.99999989569187" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\DFT_FactDepartures\Derived Column"
+          TopLeft="186.999997213483,300.999995514751" />
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\DFT_FactDepartures\Sort"
+          TopLeft="220.999996706843,148.999997779727" />
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\DFT_FactDepartures\Lookup Aircraft"
+          TopLeft="394.999994114041,298.999995544553" />
         <NodeLayout
           Size="144.8,42.4"
           Id="Package\DFT_FactDepartures\Lookup Status"
-          TopLeft="519.230761493628,64.6153836525404" />
+          TopLeft="387.230763460581,146.615382430645" />
+        <NodeLayout
+          Size="154.4,41.6"
+          Id="Package\DFT_FactDepartures\Conditional Split"
+          TopLeft="187.999997198582,230.999996557832" />
         <EdgeLayout
-          Id="Package\DFT_FactDepartures.Paths[Lookup Match Output1]"
-          TopLeft="474.99999512732,84.8076913568836">
+          Id="Package\DFT_FactDepartures.Paths[Sort Output]"
+          TopLeft="267.499996952713,190.599997779727">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="44.2307663663075,0"
+              EndConnector="0,40.3999987781049"
               Start="0,0"
-              End="36.7307663663075,0">
+              End="0,32.8999987781049">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="36.7307663663075,0" />
+                    End="0,32.8999987781049" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-29.8260035355962,5,96.3827734375,11.609375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_FactDepartures.Paths[OLE DB Source Output]"
+          TopLeft="268.699997131527,48.5999998956919">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.3999989122152"
+              Start="0,0"
+              End="0,23.8999989122152">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.8999989122152" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_FactDepartures.Paths[Lookup Match Output2]"
-          TopLeft="592.876915998872,107.01538365254">
+          TopLeft="456.37691803288,146.615382430645">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,33.0615373370738"
+              EndConnector="0,-31.9384604426534"
               Start="0,0"
-              End="0,25.5615373370738">
+              End="0,-24.4384604426534">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25.5615373370738" />
+                    End="0,-24.4384604426534" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,6.97608116853691,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,-18.0239177213267,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_FactDepartures.Paths[Lookup Match Output1]"
+          TopLeft="461.315378832015,221.999996691942">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,-32.9846142612969"
+              Start="0,0"
+              End="0,-25.4846142612969">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-25.4846142612969" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,-18.5469946306485,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_FactDepartures.Paths[Lookup Match Output]"
+          TopLeft="466.399994158745,298.999995544553">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,-35.3999988526111"
+              Start="0,0"
+              End="0,-27.8999988526111">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-27.8999988526111" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,-19.7546869263056,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_FactDepartures.Paths[Derived Column Output]"
+          TopLeft="339.799997213483,320.799995529652">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="55.1999969005586,0"
+              Start="0,0"
+              End="47.6999969005586,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="47.6999969005586,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_FactDepartures.Paths[Data Conversion Output]"
+          TopLeft="267.699996952712,121.599998807907">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27.3999989718198"
+              Start="0,0"
+              End="0,19.8999989718198">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.8999989718198" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_FactDepartures.Paths[Conditional Split Default Output]"
+          TopLeft="264.299997206032,272.599996557832">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.3999989569188"
+              Start="0,0"
+              End="0,20.8999989569188">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.8999989569188" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-70.61390625,4.6208979159594,141.2278125,11.658203125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -3080,8 +3593,23 @@ WHERE ActualDepartureDateTime IS NOT NULL</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_FactDepartures\OLE DB Source">
+    design-time-name="Package\DFT_FactDepartures\Lookup Routes">
     <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimRoutes]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
@@ -3101,12 +3629,20 @@ WHERE ActualDepartureDateTime IS NOT NULL</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\DFT_FactDepartures\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\DFT_FactDepartures\Lookup Aircraft">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -3116,30 +3652,7 @@ WHERE ActualDepartureDateTime IS NOT NULL</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_FactDepartures\Lookup Routes">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[DimRoutes]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -3152,7 +3665,7 @@ WHERE ActualDepartureDateTime IS NOT NULL</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -3162,7 +3675,7 @@ WHERE ActualDepartureDateTime IS NOT NULL</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

@@ -7,24 +7,16 @@
       "RelativeMoniker": "D:0:0:{BC7CDC62-431D-8247-9212-D4E9BBED7525}|CW_SSAS\\CW_SSAS.dwproj|solutionrelative:CW_SSAS\\Airport Cube.cube||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BC7CDC62-431D-8247-9212-D4E9BBED7525}|CW_SSAS\\CW_SSAS.dwproj|C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSAS\\CW_SSAS\\Dim Date.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design",
-      "RelativeMoniker": "D:0:0:{BC7CDC62-431D-8247-9212-D4E9BBED7525}|CW_SSAS\\CW_SSAS.dwproj|solutionrelative:CW_SSAS\\Dim Date.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BC7CDC62-431D-8247-9212-D4E9BBED7525}|CW_SSAS\\CW_SSAS.dwproj|C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSAS\\CW_SSAS\\Dim Flight Status.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design",
-      "RelativeMoniker": "D:0:0:{BC7CDC62-431D-8247-9212-D4E9BBED7525}|CW_SSAS\\CW_SSAS.dwproj|solutionrelative:CW_SSAS\\Dim Flight Status.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BC7CDC62-431D-8247-9212-D4E9BBED7525}|CW_SSAS\\CW_SSAS.dwproj|C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSAS\\CW_SSAS\\Dim Aircrafts.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design",
-      "RelativeMoniker": "D:0:0:{BC7CDC62-431D-8247-9212-D4E9BBED7525}|CW_SSAS\\CW_SSAS.dwproj|solutionrelative:CW_SSAS\\Dim Aircrafts.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design"
+      "AbsoluteMoniker": "D:0:0:{BC7CDC62-431D-8247-9212-D4E9BBED7525}|CW_SSAS\\CW_SSAS.dwproj|C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSAS\\CW_SSAS\\Airport DW.dsv||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design",
+      "RelativeMoniker": "D:0:0:{BC7CDC62-431D-8247-9212-D4E9BBED7525}|CW_SSAS\\CW_SSAS.dwproj|solutionrelative:CW_SSAS\\Airport DW.dsv||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BC7CDC62-431D-8247-9212-D4E9BBED7525}|CW_SSAS\\CW_SSAS.dwproj|C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSAS\\CW_SSAS\\Dim Routes.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design",
       "RelativeMoniker": "D:0:0:{BC7CDC62-431D-8247-9212-D4E9BBED7525}|CW_SSAS\\CW_SSAS.dwproj|solutionrelative:CW_SSAS\\Dim Routes.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BC7CDC62-431D-8247-9212-D4E9BBED7525}|CW_SSAS\\CW_SSAS.dwproj|C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSAS\\CW_SSAS\\Airport DW.dsv||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design",
-      "RelativeMoniker": "D:0:0:{BC7CDC62-431D-8247-9212-D4E9BBED7525}|CW_SSAS\\CW_SSAS.dwproj|solutionrelative:CW_SSAS\\Airport DW.dsv||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design"
+      "AbsoluteMoniker": "D:0:0:{BC7CDC62-431D-8247-9212-D4E9BBED7525}|CW_SSAS\\CW_SSAS.dwproj|C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSAS\\CW_SSAS\\Dim Flight Status.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design",
+      "RelativeMoniker": "D:0:0:{BC7CDC62-431D-8247-9212-D4E9BBED7525}|CW_SSAS\\CW_SSAS.dwproj|solutionrelative:CW_SSAS\\Dim Flight Status.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,31 +26,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Dim Flight Status.dim [Design]",
-              "DocumentMoniker": "C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSAS\\CW_SSAS\\Dim Flight Status.dim",
-              "RelativeDocumentMoniker": "CW_SSAS\\Dim Flight Status.dim",
-              "ToolTip": "C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSAS\\CW_SSAS\\Dim Flight Status.dim [Design]",
-              "RelativeToolTip": "CW_SSAS\\Dim Flight Status.dim [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-01-05T15:04:39.22Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Dim Date.dim [Design]",
-              "DocumentMoniker": "C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSAS\\CW_SSAS\\Dim Date.dim",
-              "RelativeDocumentMoniker": "CW_SSAS\\Dim Date.dim",
-              "ToolTip": "C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSAS\\CW_SSAS\\Dim Date.dim [Design]",
-              "RelativeToolTip": "CW_SSAS\\Dim Date.dim [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-01-05T15:03:57.726Z",
-              "EditorCaption": " [Design]"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -68,34 +37,34 @@
               "ToolTip": "C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSAS\\CW_SSAS\\Airport Cube.cube [Design]",
               "RelativeToolTip": "CW_SSAS\\Airport Cube.cube [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-01-05T14:17:22.054Z",
+              "WhenOpened": "2026-01-06T20:13:16.876Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Dim Aircrafts.dim [Design]",
-              "DocumentMoniker": "C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSAS\\CW_SSAS\\Dim Aircrafts.dim",
-              "RelativeDocumentMoniker": "CW_SSAS\\Dim Aircrafts.dim",
-              "ToolTip": "C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSAS\\CW_SSAS\\Dim Aircrafts.dim [Design]",
-              "RelativeToolTip": "CW_SSAS\\Dim Aircrafts.dim [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-01-05T15:03:10.824Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "Dim Routes.dim [Design]",
               "DocumentMoniker": "C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSAS\\CW_SSAS\\Dim Routes.dim",
               "RelativeDocumentMoniker": "CW_SSAS\\Dim Routes.dim",
               "ToolTip": "C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSAS\\CW_SSAS\\Dim Routes.dim [Design]",
               "RelativeToolTip": "CW_SSAS\\Dim Routes.dim [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-01-05T14:58:50.164Z"
+              "WhenOpened": "2026-01-06T20:13:12.833Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
+              "Title": "Dim Flight Status.dim [Design]",
+              "DocumentMoniker": "C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSAS\\CW_SSAS\\Dim Flight Status.dim",
+              "RelativeDocumentMoniker": "CW_SSAS\\Dim Flight Status.dim",
+              "ToolTip": "C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSAS\\CW_SSAS\\Dim Flight Status.dim [Design]",
+              "RelativeToolTip": "CW_SSAS\\Dim Flight Status.dim [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-01-06T20:13:11.123Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Airport DW.dsv [Design]",
               "DocumentMoniker": "C:\\Users\\Shyshk4\\Desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\\CW_SSAS\\CW_SSAS\\Airport DW.dsv",
               "RelativeDocumentMoniker": "CW_SSAS\\Airport DW.dsv",
